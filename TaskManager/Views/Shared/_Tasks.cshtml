@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Tasks</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TaskManager.styles.css" asp-append-version="true" />
+</head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+    <form id="form1" runat="server">
+        <div class="tasks-container">
+            <h1>My Tasks</h1>
+            
+            <!-- Displaying tasks using a simple list -->
+            <asp:Repeater ID="TaskRepeater" runat="server">
+                <ItemTemplate>
+                    <div class="task-item">
+                        <h3><%# Eval("TaskTitle") %></h3>
+                        <p><strong>Assigned to:</strong> <%# Eval("AssignedTo") %></p>
+                        <!-- Add more task details as needed -->
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            
+            <!-- If no tasks are available -->
+            <asp:Literal ID="NoTasksMessage" runat="server" Visible="false">
+                <p>No tasks available.</p>
+            </asp:Literal>
+        </div>
+    </form>
+</body>
+</html>
